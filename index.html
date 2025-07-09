@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Preencher PDF</title>
+</head>
+<body>
+  <form id="formulario">
+    <label>Nome: <input type="text" id="nome" required></label><br>
+    <label>Email: <input type="email" id="email" required></label><br>
+    <button type="submit">Gerar PDF</button>
+  </form>
+
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script>
+    const form = document.getElementById('formulario');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const form = 'https://drive.google.com/file/d/1oN_8cy1d1VWdIQsfdC9fh95yPN0Hu9SH/view?usp=sharing';
+
+      const { PDFDocument, rgb } = PDFLib;
+
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+
+      const existingPdfBytes = await fetch(form).then(res => res.arrayBuffer());
+
+      const pdfDoc = await PDFDocument.load(existingPdfBytes);
+      const pages = pdfDoc.getPages();
+      const firstPage = pages[0];
+
+      firstPage.drawText(nome, {
+        x: 100,
+        y: 500,
+        size: 12,
+        color: rgb(0, 0, 0),
+      });
+
+      firstPage.drawText(email, {
+        x: 100,
+        y: 480,
+        size: 12,
+        color: rgb(0, 0, 0),
+      });
+
+      const pdfBytes = await pdfDoc.save();
+
+      // Faz download automático do novo PDF
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'documento-preenchido.pdf';
+      a.click();
+    });
+  </script>
+</body>
+</html>
