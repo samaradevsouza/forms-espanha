@@ -1,60 +1,314 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Preencher PDF</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" />
+    <title>Preenchimento de forms - Squad Espanha</title>
 </head>
+
 <body>
-  <form id="formulario">
-    <label>Nome: <input type="text" id="nome" required></label><br>
-    <label>Email: <input type="email" id="email" required></label><br>
-    <button type="submit">Gerar PDF</button>
-  </form>
+    <header>
+        <h1>forms</h1>
+    </header>
 
-  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-  <script>
-    const form = document.getElementById('formulario');
+    <main>
+        <form id="formulario">
+            <div id="comuns">
+                <div class="input">
+                    <label for="nomeReq">Primeiro nome do requerente: </label>
+                    <input type="text" name="nomeReq" id="nomeReq">
+                </div>
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+                <div class="input">
+                    <label for="sobrenomeReq1">Primeiro sobrenome do requerente: </label>
+                    <input type="text" name="sobrenomeReq1" id="sobrenomeReq1">
+                </div>
 
-      const form = 'https://drive.google.com/file/d/1oN_8cy1d1VWdIQsfdC9fh95yPN0Hu9SH/view?usp=sharing';
+                <div class="input">
+                    <label for="sobrenomeReq2">Segundo sobrenome do requerente: </label>
+                    <input type="text" name="sobrenomeReq2" id="sobrenomeReq2">
+                </div><br>
 
-      const { PDFDocument, rgb } = PDFLib;
+                <div class="input">
+                    <label for="sobrenomePai">Primeiro sobrenome do pai do requerente: </label>
+                    <input type="text" name="sobrenomePai" id="sobrenomePai">
+                </div>
 
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
+                <div class="input">
+                    <label for="sobrenomeMae">Primeiro sobrenome da mãe do requerente</label>
+                    <input type="text" name="sobrenomeMae" id="sobrenomeMae">
+                </div>
 
-      const existingPdfBytes = await fetch(form).then(res => res.arrayBuffer());
+                <div class="input">
+                    <label for="nacionalidadeReq">Nacionalidade:</label>
+                    <input type="text" name="nacionalidadeReq" id="nacionalidadeReq" value="brasileña">
+                </div>
 
-      const pdfDoc = await PDFDocument.load(existingPdfBytes);
-      const pages = pdfDoc.getPages();
-      const firstPage = pages[0];
+                <div class="input">
+                    <label for="estadoCivilReq">Estado civil do requerente: </label>
+                    <input type="text" name="estadoCivilReq" id="estadoCivilReq">
+                </div>
 
-      firstPage.drawText(nome, {
-        x: 100,
-        y: 500,
-        size: 12,
-        color: rgb(0, 0, 0),
-      });
+                <div class="input">
+                    <label for="numPassaporteReq">Número do passaporte: </label>
+                    <input type="text" name="numPassaporteReq" id="numPassaporteReq">
+                </div>
 
-      firstPage.drawText(email, {
-        x: 100,
-        y: 480,
-        size: 12,
-        color: rgb(0, 0, 0),
-      });
+                <div class="input">
+                    <label for="endReq">Endereço residencial completo do requerente: </label>
+                    <input type="text" name="endReq" id="endReq">
+                </div>
 
-      const pdfBytes = await pdfDoc.save();
+                <div class="input">
+                    <label for="estadoReq">Estado de residencia do requerente: </label>
+                    <input type="text" name="estadoReq" id="estadoReq">
+                </div>
 
-      // Faz download automático do novo PDF
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'documento-preenchido.pdf';
-      a.click();
-    });
-  </script>
+                <div class="input">
+                    <label for="cepReq">CEP de residência do requerente: </label>
+                    <input type="text" name="cepReq" id="cepReq">
+                </div>
+
+                <div class="input">
+                    <label for="paisReq">País de residência do requerente</label>
+                    <input type="text" name="paisReq" id="paisReq">
+                </div>
+
+                <div class="input">
+                    <label for="telReq">Telefone celular do requerente</label>
+                    <input type="text" name="telReq" id="telReq">
+                </div>
+
+                <div class="input">
+                    <label for="emailReq">E-mail do requerente</label>
+                    <input type="text" name="emailReq" id="emailReq">
+                </div>
+
+                <div class="input">
+                    <label for="cidadeConsulado">Cidade do Consulado: </label>
+                    <input type="text" name="cidadeConsulado" id="cidadeConsulado">
+                </div>
+            </div>
+
+            <div id="ddn">
+                <p>DATOS DEL NACIMIENTO</p>
+                <div class="input">
+                    <label for="hora">Hora:</label>
+                    <input type="text" name="hora" id="hora" placeholder="00:00">
+                </div>
+                <div class="input">
+                    <label for="diaReq">Dia:</label>
+                    <input type="text" name="diaReq" id="diaReq">
+                </div>
+                <div class="input">
+                    <label for="anoReq">Año</label>
+                    <input type="text" name="anoReq" id="anoReq">
+                </div>
+                <div class="input">
+                    <label for="localidad">Local de nascimento:</label>
+                    <input type="text" name="localidad" id="localidad">
+                </div>
+                <div class="input">
+                    <label for="paisNasc">País:</label>
+                    <input type="text" name="paisNasc" id="paisNasc">
+                </div>
+                <div class="input">
+                    <label for="diaRegistro">Dia do registro: </label>
+                    <input type="text" name="diaRegistro" id="diaRegistro" placeholder="DD">
+                </div>
+                <div class="input">
+                    <label for="anoRegistro">Ano do registro:</label>
+                    <input type="text" name="anoRegistro" id="anoRegistro" placeholder="AAAA">
+                </div>
+                <div class="input">
+                    <label for="localRegistro">Local do Registro</label>
+                    <input type="text" name="localRegistro" id="localRegistro">
+                </div>
+                <div class="input">
+                    <label for="paisRegistro">País do registro: </label>
+                    <input type="text" name="paisRegistro" id="paisRegistro">
+                </div>
+                <div class="input">
+                    <label for="livro">Livro: </label>
+                    <input type="text" name="livro" id="livro">
+                </div>
+                <div class="input">
+                    <label for="folha">Folha:</label>
+                    <input type="text" name="folha" id="folha">
+                </div>
+                <div class="input">
+                    <label for="termo">Termo: </label>
+                    <input type="text" name="termo" id="termo">
+                </div>
+
+            <p>DATOS DEL PADRE</p>
+            <div class="input">
+                <label for="nomePai">Primeiro nome do pai: </label>
+                <input type="text" name="nomePai" id="nomePai">
+            </div>
+            <div class="input">
+                <label for="sobrenomePai1">Primeiro sobrenome do pai: </label>
+                <input type="text" name="sobrenomePai1" id="sobrenomePai1">
+            </div>
+            <div class="input">
+                <label for="sobrenomePai2">Segundo sobrenome do pai:</label>
+                <input type="text" name="sobrenomePai2" id="sobrenomePai2">
+            </div>
+            <div class="input">
+                <label for="paiPai">Pai:</label>
+                <input type="text" name="paiPai" id="paiPai">
+            </div>
+            <div class="input">
+                <label for="maePai">Mãe:</label>
+                <input type="text" name="maePai" id="maePai">
+            </div>
+            <div class="input">
+                <label for="localidadPai">Local de nascimento:</label>
+                <input type="text" name="localidadPai" id="localidadPai">
+            </div>
+            <div class="input">
+                <label for="paisNascPai">País: </label>
+                <input type="text" name="paisNascPai" id="paisNascPai">
+            </div>
+            <div class="input">
+                <label for="diaNascPai">Dia de nascimento:</label>
+                <input type="text" name="diaNascPai" id="diaNascPai" placeholder="DD">
+            </div>
+            <div class="input">
+                <label for="anoNascPai">Ano de nascimento: </label>
+                <input type="text" name="anoNascPai" id="anoNascPai" placeholder="AAAA">
+            </div>
+            <div class="input">
+                <label for="">Estado civil do pai no nascimento do(a) filho(a):</label>
+                <input type="text" name="estadoCivilPai1" id="estadoCivilPai1">
+            </div>
+            <div class="input">
+                <label for="estadoCivilPai2">Estado civil do pai atualmente:</label>
+                <input type="text" name="estadoCivilPai2" id="estadoCivilPai2">
+            </div>
+            <div class="input">
+                <label for="nacionalidadePai1">Nacionalidade do pai ao nascer do(a) filho(a)</label>
+                <input type="text" name="nacionalidadePai1" id="nacionalidadePai1">
+            </div>
+            <div class="input">
+                <label for="nacionalidadePai2">Nacionalidade do pai atualmente: </label>
+                <input type="text" name="nacionalidadePai2" id="nacionalidadePai2">
+            </div>
+            <div class="input">
+                <label for="domicilioPai">Domicilio do pai no momento de nascimento do(a) filho(a): </label>
+                <input type="text" name="domicilioPai" id="domicilioPai">
+            </div>
+
+            <p>DATOS DE LA MADRE</p>
+
+            <div class="input">
+                <label for="nomeMae">Primeiro nome da mãe: </label>
+                <input type="text" name="nomeMae" id="nomeMae">
+            </div>
+            <div class="input">
+                <label for="sobrenomeMae1">Primeiro sobrenome da mãe: </label>
+                <input type="text" name="sobrenomeMae1" id="sobrenomeMae1">
+            </div>
+            <div class="input">
+                <label for="sobrenomeMae2">Segunda sobrenome da mãe:</label>
+                <input type="text" name="sobrenomeMae2" id="sobrenomeMae2">
+            </div>
+            <div class="input">
+                <label for="maeMae">Mãe:</label>
+                <input type="text" name="maeMae" id="maeMae">
+            </div>
+            <div class="input">
+                <label for="paiMae">Pai:</label>
+                <input type="text" name="paiMae" id="paiMae">
+            </div>
+            <div class="input">
+                <label for="localidadMae">Local de nascimento:</label>
+                <input type="text" name="localidadMae" id="localidadMae">
+            </div>
+            <div class="input">
+                <label for="MaesNascMae">País: </label>
+                <input type="text" name="MaesNascMae" id="MaesNascMae">
+            </div>
+            <div class="input">
+                <label for="diaNascMae">Dia de nascimento:</label>
+                <input type="text" name="diaNascMae" id="diaNascMae" placeholder="DD">
+            </div>
+            <div class="input">
+                <label for="anoNascMae">Ano de nascimento: </label>
+                <input type="text" name="anoNascMae" id="anoNascMae" placeholder="AAAA">
+            </div>
+            <div class="input">
+                <label for="EstadoCivilMae1">Estado civil da mãe no nascimento do(a) filho(a):</label>
+                <input type="text" name="EstadoCivilMae1" id="EstadoCivilMae1">
+            </div>
+            <div class="input">
+                <label for="EstadoCivilMae2">Estado civil da mãe atualmente:</label>
+                <input type="text" name="EstadoCivilMae2" id="EstadoCivilMae2">
+            </div>
+            <div class="input">
+                <label for="nacionalidadeMae1">Nacionalidade da mãe ao nascer do(a) filho(a)</label>
+                <input type="text" name="nacionalidadeMae1" id="nacionalidadeMae1">
+            </div>
+            <div class="input">
+                <label for="nacionalidadeMae2">Nacionalidade da mãe atualmente: </label>
+                <input type="text" name="nacionalidadeMae2" id="nacionalidadeMae2">
+            </div>
+            <div class="input">
+                <label for="domicilioMae">Domicilio da mãe no momento de nascimento do(a) filho(a): </label>
+                <input type="text" name="domicilioMae" id="domicilioMae">
+            </div>
+
+            <p>MATRIMONIO DE LOS PADRES</p>
+            <div class="input">
+                <label for="diaCelebracao">Dia da celebração:</label>
+                <input type="text" name="diaCelebracao" id="diaCelebracao">
+            </div>
+            <div class="input">
+                <label for="anoCelebracao">Ano da celebração: </label>
+                <input type="text" name="anoCelebracao" id="anoCelebracao">
+            </div>
+            <div class="input">
+                <label for="localCelebracao">Local da celebração: </label>
+                <input type="text" name="localCelebracao" id="localCelebracao" placeholder="Cidade, estado, país">
+            </div>
+            <div class="input">
+                <label for="localRegistroCas">Lugar que foi registrado: </label>
+                <input type="text" name="localRegistroCas" id="localRegistroCas" placeholder="Cidade, estado, país">
+            </div>
+
+            <p>DECLARANTE</p>
+            <div class="input">
+                <label for="nomeCompletoReq">Nome completo do Requerente:</label>
+                <input type="text" name="nomeCompletoReq" id="nomeCompletoReq">
+            </div>
+            <div class="input">
+                <label for="calidad">En calidad de…</label>
+                <input type="text" name="calidad" id="calidad" value="Interesado">
+            </div>
+            <div class="input">
+                <label for="docId">Documento de identificação: </label>
+                <input type="text" name="docId" id="docId">
+            </div>
+            
+            </div>
+            <button type="submit">Preencher!</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&#10022; Desenvolvido com carinho por <a href="https://github.com/samaradevsouza">Samara de Souza</a>
+            &#10022;</p>
+        <p>Caso tenha alguma sugestão, me manda uma mensagem no Teams! :)</p>
+    </footer>
+
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script>
+        
+    </script>
+
+
 </body>
+
 </html>
