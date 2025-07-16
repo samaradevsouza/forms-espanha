@@ -12,11 +12,22 @@
 <body>
     <header>
         <h1>&#10048; Formulários de Espanha &#10048;</h1>
-        <p id="info">Anexo I, Anexo V, Registro Civil, Solicitud de inscripción como residente</p>
+        <p id="info">Anexo I ou III, Anexo V, Registro Civil, Solicitud de inscripción como residente</p>
     </header>
 
     <main>
         <form id="formulario">
+            <div class="anexoType">
+                <div class="input-radio">
+                    <input type="radio" name="anexoType" id="anexoI" value="Anexo I">
+                    <label for="anexoI">Anexo I</label>
+                </div>
+
+                <div class="input-radio">
+                    <input type="radio" name="anexoType" id="anexoIII" value="Anexo III">
+                    <label for="anexoIII">Anexo III</label>
+                </div>
+            </div>
             <div id="comuns">
                 <p>dados gerais</p>
                 <div class="input">
@@ -426,6 +437,10 @@
 
             const { PDFDocument } = PDFLib;
 
+            const anexoSelecionado = document.querySelector('input[name="anexoType"]:checked')?.value;
+
+
+
             const dados = {
                 nomeReq: document.getElementById('nomeReq').value,
                 sobrenomeReq1: document.getElementById('sobrenomeReq1').value,
@@ -506,10 +521,11 @@
                 docId: document.getElementById('docId').value
 
             }
-            
 
-            const arquivos = [
-                {
+            const arquivos = [];
+
+            if (anexoSelecionado === "Anexo I") {
+                arquivos.push({
                     url: './forms-sp/anexo1.pdf',
                     nome: 'AnexoI.pdf',
                     campos: {
@@ -528,8 +544,29 @@
                         'Texto1': dados.cidadeConsulado,
                         'Taextfield-6': 'Española',
                     }
-                }, 
-                form.getCheckBox('checkbox_41vweu').check(),
+                });
+            } else {
+                arquivos.push({
+                    url: './forms-sp/anexo3.pdf',
+                    nome: 'AnexoIII.pdf',
+                    campos: {
+                        'RegistroCivil': dados.cidadeConsulado,
+                        'Nombre': dados.nomeReq,
+                        'Texto3': dadosDDN.sobrenomePai1,
+                        'ApellidoMadre': dadosDDN.sobrenomeMae1,
+                        'Nacionalidad': "Brasileña",
+                        'EstadoCivil': dados.estadoCivilReq,
+                        'Pasaporte': dados.numPassaporteReq,
+                        'Domicilio': dados.endReq,
+                        'Provincia': dados.estadoReq,
+                        'Pais': dados.paisReq,
+                        'Telefono': dados.telReq,
+                        'eMail': dados.emailReq,
+                        'FirmaEN': dados.cidadeConsulado,
+                    }
+                });
+            }
+            arquivos.push(
                 {
                     url: './forms-sp/anexo5.pdf',
                     nome: 'AnexoV.pdf',
@@ -603,9 +640,9 @@
                         'nac madre act': dadosDDN.nacionalidadeMae2,
                         'Domicilio  de la madre en el momento del nacimiento del hijoa': dadosDDN.domicilioMae,
 
-                        'text_74ikwy' : dadosDDN.existeONo,
+                        'text_74ikwy': dadosDDN.existeONo,
                         'Dia mat padres': dadosDDN.diaCelebracao,
-                        'text_84swvj' : dadosDDN.mesCelebracao,
+                        'text_84swvj': dadosDDN.mesCelebracao,
                         'año': dadosDDN.anoCelebracao,
                         'text_74uavp': dadosDDN.localCelebracao,
                         'Incrito RC': dadosDDN.localRegistroCas,
@@ -614,7 +651,7 @@
                         'text_75kxrq': dadosDDN.calidad,
                         'Natural de': dadosDDN.localidad + " " + dadosDDN.paisNasc,
                         'día': dadosDDN.diaReq,
-                        'text_73syra' : dadosDDN.mesReq,
+                        'text_73syra': dadosDDN.mesReq,
                         'año_2': dadosDDN.anoReq,
                         'text_77zgxo': dados.endReq,
                         'cep': dados.cepReq,
@@ -643,7 +680,7 @@
                         'text_49wlnx': dados.cidadeConsulado
                     }
                 }
-            ];
+            );
 
             for (const arquivo of arquivos) {
                 try {
