@@ -38,7 +38,7 @@ label {
     color: #4d517f;
 }
 
-input[type="text"] {
+input[type="text"], select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;

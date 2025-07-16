@@ -32,21 +32,20 @@
                 <div class="input">
                     <label for="sobrenomeReq2">Segundo sobrenome do requerente: </label>
                     <input type="text" name="sobrenomeReq2" id="sobrenomeReq2">
-                </div><br>
-
-                <div class="input">
-                    <label for="sobrenomePai">Primeiro sobrenome do pai do requerente: </label>
-                    <input type="text" name="sobrenomePai" id="sobrenomePai">
                 </div>
-
                 <div class="input">
-                    <label for="sobrenomeMae">Primeiro sobrenome da mãe do requerente</label>
-                    <input type="text" name="sobrenomeMae" id="sobrenomeMae">
+                    <label for="sexo">Sexo: </label>
+                    <select name="sexo" id="sexo">
+                        <option value="">Selecione</option>
+                        <option value="Varón">Varón</option>
+                        <option value="Mujer">Mujer</option>
+                    </select>
                 </div>
+                <br>
 
                 <div class="input">
                     <label for="nacionalidadeReq">Nacionalidade:</label>
-                    <input type="text" name="nacionalidadeReq" id="nacionalidadeReq" value="brasileña">
+                    <input type="text" name="nacionalidadeReq" id="nacionalidadeReq" value="Brasileña">
                 </div>
 
                 <div class="input">
@@ -106,6 +105,25 @@
                     <input type="text" name="diaReq" id="diaReq">
                 </div>
                 <div class="input">
+                    <label for="mesReq">Mês de registro: </label>
+                    <select name="mesReq" id="mesReq">
+                        <option value="">Selecione</option>
+                        <option value="Enero">Enero – janeiro</option>
+                        <option value="Febrero">Febrero – fevereiro</option>
+                        <option value="Marzo">Marzo – março</option>
+                        <option value="Abril">Abril – abril</option>
+                        <option value="Mayo">Mayo – maio</option>
+                        <option value="Junio">Junio – junho</option>
+                        <option value="Julio">Julio – julho</option>
+                        <option value="Agosto">Agosto – agosto</option>
+                        <option value="Septiembre">Septiembre – setembro</option>
+                        <option value="Octubre">Octubre – outubro</option>
+                        <option value="Noviembre">Noviembre – novembro</option>
+                        <option value="Diciembre">Diciembre – dezembro</option>
+                    </select>
+                </div>
+
+                <div class="input">
                     <label for="anoReq">Año</label>
                     <input type="text" name="anoReq" id="anoReq">
                 </div>
@@ -119,7 +137,25 @@
                 </div>
                 <div class="input">
                     <label for="diaRegistro">Dia do registro: </label>
-                    <input type="text" name="diaRegistro" id="diaRegistro" placeholder="DD">
+                    <input type="text" name="diaRegistro" id="diaRegistro" placeholder="Por extenso">
+                </div>
+                <div class="input">
+                    <label for="mesRegistro">Mês de registro: </label>
+                    <select name="mesRegistro" id="mesRegistro">
+                        <option value="">Selecione</option>
+                        <option value="Enero">Enero – janeiro</option>
+                        <option value="Febrero">Febrero – fevereiro</option>
+                        <option value="Marzo">Marzo – março</option>
+                        <option value="Abril">Abril – abril</option>
+                        <option value="Mayo">Mayo – maio</option>
+                        <option value="Junio">Junio – junho</option>
+                        <option value="Julio">Julio – julho</option>
+                        <option value="Agosto">Agosto – agosto</option>
+                        <option value="Septiembre">Septiembre – setembro</option>
+                        <option value="Octubre">Octubre – outubro</option>
+                        <option value="Noviembre">Noviembre – novembro</option>
+                        <option value="Diciembre">Diciembre – dezembro</option>
+                    </select>
                 </div>
                 <div class="input">
                     <label for="anoRegistro">Ano do registro:</label>
@@ -180,6 +216,24 @@
                     <input type="text" name="diaNascPai" id="diaNascPai" placeholder="DD">
                 </div>
                 <div class="input">
+                    <label for="mesNascPai">Mês de registro: </label>
+                    <select name="mesNascPai" id="mesNascPai">
+                        <option value="">Selecione</option>
+                        <option value="Enero">Enero – janeiro</option>
+                        <option value="Febrero">Febrero – fevereiro</option>
+                        <option value="Marzo">Marzo – março</option>
+                        <option value="Abril">Abril – abril</option>
+                        <option value="Mayo">Mayo – maio</option>
+                        <option value="Junio">Junio – junho</option>
+                        <option value="Julio">Julio – julho</option>
+                        <option value="Agosto">Agosto – agosto</option>
+                        <option value="Septiembre">Septiembre – setembro</option>
+                        <option value="Octubre">Octubre – outubro</option>
+                        <option value="Noviembre">Noviembre – novembro</option>
+                        <option value="Diciembre">Diciembre – dezembro</option>
+                    </select>
+                </div>
+                <div class="input">
                     <label for="anoNascPai">Ano de nascimento: </label>
                     <input type="text" name="anoNascPai" id="anoNascPai" placeholder="AAAA">
                 </div>
@@ -231,12 +285,30 @@
                     <input type="text" name="localidadMae" id="localidadMae">
                 </div>
                 <div class="input">
-                    <label for="MaesNascMae">País: </label>
+                    <label for="PaisNascMae">País: </label>
                     <input type="text" name="PaisNascMae" id="PaisNascMae">
                 </div>
                 <div class="input">
                     <label for="diaNascMae">Dia de nascimento:</label>
-                    <input type="text" name="diaNascMae" id="diaNascMae" placeholder="DD">
+                    <input type="text" name="diaNascMae" id="diaNascMae" placeholder="Por extenso">
+                </div>
+                <div class="input">
+                    <label for="mesNascMae">Mês de registro: </label>
+                    <select name="mesNascMae" id="mesNascMae">
+                        <option value="">Selecione</option>
+                        <option value="Enero">Enero – janeiro</option>
+                        <option value="Febrero">Febrero – fevereiro</option>
+                        <option value="Marzo">Marzo – março</option>
+                        <option value="Abril">Abril – abril</option>
+                        <option value="Mayo">Mayo – maio</option>
+                        <option value="Junio">Junio – junho</option>
+                        <option value="Julio">Julio – julho</option>
+                        <option value="Agosto">Agosto – agosto</option>
+                        <option value="Septiembre">Septiembre – setembro</option>
+                        <option value="Octubre">Octubre – outubro</option>
+                        <option value="Noviembre">Noviembre – novembro</option>
+                        <option value="Diciembre">Diciembre – dezembro</option>
+                    </select>
                 </div>
                 <div class="input">
                     <label for="anoNascMae">Ano de nascimento: </label>
@@ -265,8 +337,34 @@
 
                 <p>MATRIMONIO DE LOS PADRES</p>
                 <div class="input">
+                    <label for="existeONo">Casamento existe? </label>
+                    <select name="existeONo" id="existeONo">
+                        <option value="">Selecione</option>
+                        <option value="Existe">Existe</option>
+                        <option value="No existe">No existe</option>
+                    </select>
+                </div>
+                <div class="input">
                     <label for="diaCelebracao">Dia da celebração:</label>
                     <input type="text" name="diaCelebracao" id="diaCelebracao">
+                </div>
+                <div class="input">
+                    <label for="mesCelebracao">Mês de registro: </label>
+                    <select name="mesCelebracao" id="mesCelebracao">
+                        <option value="">Selecione</option>
+                        <option value="Enero">Enero – janeiro</option>
+                        <option value="Febrero">Febrero – fevereiro</option>
+                        <option value="Marzo">Marzo – março</option>
+                        <option value="Abril">Abril – abril</option>
+                        <option value="Mayo">Mayo – maio</option>
+                        <option value="Junio">Junio – junho</option>
+                        <option value="Julio">Julio – julho</option>
+                        <option value="Agosto">Agosto – agosto</option>
+                        <option value="Septiembre">Septiembre – setembro</option>
+                        <option value="Octubre">Octubre – outubro</option>
+                        <option value="Noviembre">Noviembre – novembro</option>
+                        <option value="Diciembre">Diciembre – dezembro</option>
+                    </select>
                 </div>
                 <div class="input">
                     <label for="anoCelebracao">Ano da celebração: </label>
@@ -328,12 +426,9 @@
 
             const { PDFDocument } = PDFLib;
 
-            // Coleta os dados do formulário
             const dados = {
                 nomeReq: document.getElementById('nomeReq').value,
                 sobrenomeReq1: document.getElementById('sobrenomeReq1').value,
-                sobrenomePai: document.getElementById('sobrenomePai').value,
-                sobrenomeMae: document.getElementById('sobrenomeMae').value,
                 nacionalidadeReq: document.getElementById('nacionalidadeReq').value,
                 estadoCivilReq: document.getElementById('estadoCivilReq').value,
                 numPassaporteReq: document.getElementById('numPassaporteReq').value,
@@ -346,19 +441,20 @@
                 cidadeConsulado: document.getElementById('cidadeConsulado').value,
                 dataNasc: document.getElementById('dataNasc').value,
                 conjugeReq: document.getElementById('conjugeReq').value,
+                sexo: document.getElementById('sexo').value,
             };
-
-            const enderecoCompleto = dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq;
 
             const dadosDDN = {
                 sobrenomeReq1: document.getElementById('sobrenomeReq1').value,
                 sobrenomeReq2: document.getElementById('sobrenomeReq2').value,
                 hora: document.getElementById('hora').value,
                 diaReq: document.getElementById('diaReq').value,
+                mesReq: document.getElementById('mesReq').value,
                 anoReq: document.getElementById('anoReq').value,
                 localidad: document.getElementById('localidad').value,
                 paisNasc: document.getElementById('paisNasc').value,
                 diaRegistro: document.getElementById('diaRegistro').value,
+                mesRegistro: document.getElementById('mesRegistro').value,
                 anoRegistro: document.getElementById('anoRegistro').value,
                 localRegistro: document.getElementById('localRegistro').value,
                 paisRegistro: document.getElementById('paisRegistro').value,
@@ -374,6 +470,7 @@
                 localidadPai: document.getElementById('localidadPai').value,
                 paisNascPai: document.getElementById('paisNascPai').value,
                 diaNascPai: document.getElementById('diaNascPai').value,
+                mesNascPai: document.getElementById('mesNascPai').value,
                 anoNascPai: document.getElementById('anoNascPai').value,
                 estadoCivilPai1: document.getElementById('estadoCivilPai1').value,
                 estadoCivilPai2: document.getElementById('estadoCivilPai2').value,
@@ -389,6 +486,7 @@
                 localidadMae: document.getElementById('localidadMae').value,
                 PaisNascMae: document.getElementById('PaisNascMae').value,
                 diaNascMae: document.getElementById('diaNascMae').value,
+                mesNascMae: document.getElementById('mesNascMae').value,
                 anoNascMae: document.getElementById('anoNascMae').value,
                 EstadoCivilMae1: document.getElementById('EstadoCivilMae1').value,
                 EstadoCivilMae2: document.getElementById('EstadoCivilMae2').value,
@@ -396,7 +494,9 @@
                 nacionalidadeMae2: document.getElementById('nacionalidadeMae2').value,
                 domicilioMae: document.getElementById('domicilioMae').value,
 
+                existeONo: document.getElementById('existeONo').value,
                 diaCelebracao: document.getElementById('diaCelebracao').value,
+                mesCelebracao: document.getElementById('mesCelebracao').value,
                 anoCelebracao: document.getElementById('anoCelebracao').value,
                 localCelebracao: document.getElementById('localCelebracao').value,
                 localRegistroCas: document.getElementById('localRegistroCas').value,
@@ -406,10 +506,8 @@
                 docId: document.getElementById('docId').value
 
             }
+            
 
-            const naturalDe = dadosDDN.localidad + " " + dadosDDN.paisNasc;
-
-            // Lista de PDFs a serem preenchidos
             const arquivos = [
                 {
                     url: './forms-sp/anexo1.pdf',
@@ -424,24 +522,25 @@
                         'Textfield-5': dados.paisReq,
                         'Textfield-6': dados.emailReq,
                         'Textfield-0a': dados.cidadeConsulado,
-                        'Textfielda-3': dados.endReq,
+                        'Textfielda-3': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq,
                         'Textaafield-3': dados.estadoReq,
                         'Textfddield-3': dados.telReq,
                         'Texto1': dados.cidadeConsulado,
                         'Taextfield-6': 'Española',
                     }
-                },
+                }, 
+                form.getCheckBox('checkbox_41vweu').check(),
                 {
                     url: './forms-sp/anexo5.pdf',
                     nome: 'AnexoV.pdf',
                     campos: {
                         'Textfield': dados.nomeReq + " " + dados.sobrenomeReq1,
-                        'Textfield-0': dados.nomeReq,
-                        'Textfield-1': dados.sobrenomePai,
+                        'Textfield-0': dados.sobrenomePai1,
+                        'Textfield-1': dados.sobrenomeMae1,
                         'Textfield-2': dados.nacionalidadeReq,
-                        'Textfield-3': dados.sobrenomeMae,
+                        'Textfield-3': dados.estadoCivilReq,
                         'Textfield-4': dados.numPassaporteReq,
-                        'Textfield-5': dados.endReq,
+                        'Textfield-5': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq,
                         'Textfield-6': dados.estadoReq,
                         'Textfield-7': dados.paisReq,
                         'Textfield-8': dados.telReq,
@@ -456,12 +555,15 @@
                         'Nombre': dados.nomeReq,
                         'Apellido 1': dadosDDN.sobrenomeReq1,
                         'Apellido 2': dadosDDN.sobrenomeReq2,
-                        'Hora': dadosDDN.hora,
+                        'text_79qvkw': dados.sexo,
+                        'text_80oj': dadosDDN.hora,
                         'Dia': dadosDDN.diaReq,
+                        'text_78yxxr': dadosDDN.mesRegistro,
                         'Año': dadosDDN.anoReq,
                         'Localidad': dadosDDN.localidad,
                         'Pais': dadosDDN.paisNasc,
                         'Dia_Incripcion': dadosDDN.diaRegistro,
+                        'text_82wrmg': dadosDDN.mesRegistro,
                         'Año Inscrito': dadosDDN.anoRegistro,
                         'Localidad Rehistro': dadosDDN.localRegistro,
                         'Pais Registro': dadosDDN.paisRegistro,
@@ -477,6 +579,7 @@
                         'Localidad Padre': dadosDDN.localidadPai,
                         'Pais Padre': dadosDDN.paisNascPai,
                         'Dia padre': dadosDDN.diaNascPai,
+                        'text_81dlpf': dadosDDN.mesNascPai,
                         'del año': dadosDDN.anoNascPai,
                         'Estado civil del padre al nacerl': dadosDDN.estadoCivilPai1,
                         'Estado civil del padre en el momento actual': dadosDDN.estadoCivilPai2,
@@ -492,6 +595,7 @@
                         'Nacida madre': dadosDDN.localidadMae,
                         'Pais madre': dadosDDN.PaisNascMae,
                         'Dia madre': dadosDDN.diaNascMae,
+                        'text_83sskt': dadosDDN.mesNascMae,
                         'del año_2': dadosDDN.anoNascMae,
                         'Estado civil de madre al nacerl': dadosDDN.EstadoCivilMae1,
                         'Estado civil de madre en el momento actual': dadosDDN.EstadoCivilMae2,
@@ -499,17 +603,20 @@
                         'nac madre act': dadosDDN.nacionalidadeMae2,
                         'Domicilio  de la madre en el momento del nacimiento del hijoa': dadosDDN.domicilioMae,
 
+                        'text_74ikwy' : dadosDDN.existeONo,
                         'Dia mat padres': dadosDDN.diaCelebracao,
+                        'text_84swvj' : dadosDDN.mesCelebracao,
                         'año': dadosDDN.anoCelebracao,
-                        'undefined_4': dadosDDN.localCelebracao,
+                        'text_74uavp': dadosDDN.localCelebracao,
                         'Incrito RC': dadosDDN.localRegistroCas,
 
-                        'DonDoña': dadosDDN.nomeCompletoReq,
-                        'en calidad de': dadosDDN.calidad,
-                        'Natural de': dadosDDN.naturalDe,
+                        'text_76sfmj': dadosDDN.nomeCompletoReq,
+                        'text_75kxrq': dadosDDN.calidad,
+                        'Natural de': dadosDDN.localidad + " " + dadosDDN.paisNasc,
                         'día': dadosDDN.diaReq,
+                        'text_73syra' : dadosDDN.mesReq,
                         'año_2': dadosDDN.anoReq,
-                        'cilio': dados.endReq,
+                        'text_77zgxo': dados.endReq,
                         'cep': dados.cepReq,
                         'Telf móvil': dados.telReq,
                         'undefined_5': dadosDDN.docId,
@@ -522,13 +629,13 @@
                     nome: 'solicitud.pdf',
                     campos: {
                         'text_3zdxa': dados.cidadeConsulado,
-                        'text_2afhz': 'NO',
+                        'text_2afhz': 'No',
                         'text_50lwgr': dados.nomeReq,
                         'text_13vndq': dadosDDN.nomePai + " " + dadosDDN.sobrenomePai1 + " " + dadosDDN.sobrenomePai2,
                         'text_14ddnl': dadosDDN.nomeMae + " " + dadosDDN.sobrenomeMae1 + " " + dadosDDN.sobrenomeMae2,
                         'text_4sdk': dados.dataNasc,
-                        'text_5agtp': dados.naturalDe,
-                        'text_19qywy': dados.enderecoCompleto,
+                        'text_5agtp': dadosDDN.localidad + " " + dadosDDN.paisNasc,
+                        'text_19qywy': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq,
                         'text_21vpwr': dados.telReq,
                         'text_22lvdx': dados.emailReq,
                         'text_29nvjz': dados.conjugeReq,
