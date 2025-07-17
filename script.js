@@ -99,8 +99,8 @@ formHtml.addEventListener('submit', async (e) => {
             nome: 'AnexoI.pdf',
             campos: {
                 'Textfield': dados.nomeReq,
-                'Textfield-0': dados.sobrenomePai,
-                'Textfield-1': dados.sobrenomeMae,
+                'Textfield-0': dadosDDN.sobrenomePai1,
+                'Textfield-1': dadosDDN.sobrenomeMae1,
                 'Textfield-2': dados.nacionalidadeReq,
                 'Textfield-3': dados.estadoCivilReq,
                 'Textfield-4': dados.numPassaporteReq,
@@ -141,8 +141,8 @@ formHtml.addEventListener('submit', async (e) => {
             nome: 'AnexoV.pdf',
             campos: {
                 'Textfield': dados.nomeReq + " " + dados.sobrenomeReq1,
-                'Textfield-0': dados.sobrenomePai1,
-                'Textfield-1': dados.sobrenomeMae1,
+                'Textfield-0': dadosDDN.sobrenomePai1,
+                'Textfield-1': dadosDDN.sobrenomeMae1,
                 'Textfield-2': dados.nacionalidadeReq,
                 'Textfield-3': dados.estadoCivilReq,
                 'Textfield-4': dados.numPassaporteReq,
