@@ -221,7 +221,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'Natural de': dadosDDN.localidad + " " + dadosDDN.paisNasc,
                 'día': dadosDDN.diaReq,
                 'text_73syra': dadosDDN.mesReq,
-                'año_2': dadosDDN.anoReq,
+                'text_74pzix': dadosDDN.anoReq,
                 'text_77zgxo': dados.endReq,
                 'text_73tcpb': dados.cepReq,
                 'Telf móvil': dados.telReq,
