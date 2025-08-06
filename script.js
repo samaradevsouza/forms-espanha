@@ -87,8 +87,10 @@ formHtml.addEventListener('submit', async (e) => {
 
         nomeCompletoReq: document.getElementById('nomeCompletoReq').value,
         calidad: document.getElementById('calidad').value,
-        docId: document.getElementById('docId').value
+        docId: document.getElementById('docId').value,
 
+        nomeCompletoMae: document.getElementById('nomeCompletoMae'),
+        nomeCompletoPai: document.getElementById('nomeCompletoPai')
     }
 
     const arquivos = [];
@@ -107,7 +109,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'Textfield-5': dados.paisReq,
                 'Textfield-6': dados.emailReq,
                 'Textfield-0a': dados.cidadeConsulado,
-                'Textfielda-3': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq,
+                'Textfielda-3': dados.endReq + " CEP: " + dados.cepReq,
                 'Textaafield-3': dados.estadoReq,
                 'Textfddield-3': dados.telReq,
                 'Texto1': dados.cidadeConsulado,
@@ -146,7 +148,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'Textfield-2': dados.nacionalidadeReq,
                 'Textfield-3': dados.estadoCivilReq,
                 'Textfield-4': dados.numPassaporteReq,
-                'Textfield-5': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq,
+                'Textfield-5': dados.endReq + " CEP: " + dados.cepReq,
                 'Textfield-6': dados.estadoReq,
                 'Textfield-7': dados.paisReq,
                 'Textfield-8': dados.telReq,
@@ -237,11 +239,11 @@ formHtml.addEventListener('submit', async (e) => {
                 'text_3zdxa': dados.cidadeConsulado,
                 'text_2afhz': 'No',
                 'text_50lwgr': dados.nomeReq,
-                'text_13vndq': dadosDDN.nomePai + " " + dadosDDN.sobrenomePai1 + " " + dadosDDN.sobrenomePai2,
-                'text_14ddnl': dadosDDN.nomeMae + " " + dadosDDN.sobrenomeMae1 + " " + dadosDDN.sobrenomeMae2,
+                'text_13vndq': dadosDDN.nomeCompletoPai,
+                'text_14ddnl': dadosDDN.nomeCompletoMae,
                 'text_4sdk': dados.dataNasc,
                 'text_5agtp': dadosDDN.localidad + " " + dadosDDN.paisNasc,
-                'text_19qywy': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " " + dados.cepReq,
+                'text_19qywy': dados.endReq + " " + dados.estadoReq + " " + dados.paisReq + " CEP: " + dados.cepReq,
                 'text_21vpwr': dados.telReq,
                 'text_22lvdx': dados.emailReq,
                 'text_29nvjz': dados.conjugeReq,
