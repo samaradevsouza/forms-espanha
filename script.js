@@ -89,8 +89,8 @@ formHtml.addEventListener('submit', async (e) => {
         calidad: document.getElementById('calidad').value,
         docId: document.getElementById('docId').value,
 
-        nomeCompletoMae: document.getElementById('nomeCompletoMae'),
-        nomeCompletoPai: document.getElementById('nomeCompletoPai')
+        nomeCompletoMae: document.getElementById('nomeCompletoMae').value,
+        nomeCompletoPai: document.getElementById('nomeCompletoPai').value
     }
 
     const arquivos = [];
@@ -239,8 +239,8 @@ formHtml.addEventListener('submit', async (e) => {
                 'text_3zdxa': dados.cidadeConsulado,
                 'text_2afhz': 'No',
                 'text_50lwgr': dados.nomeReq,
-                'text_46rrlo': dadosDDN.nomeCompletoPai,
-                'text_47srxm': dadosDDN.nomeCompletoMae,
+                'text_44qlcd': dadosDDN.nomeCompletoPai,
+                'text_45ldqp': dadosDDN.nomeCompletoMae,
                 'text_4sdk': dados.dataNasc,
                 'text_5agtp': dadosDDN.localidad + " " + dadosDDN.paisNasc,
                 'text_19qywy': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq + ", CEP: " + dados.cepReq,
