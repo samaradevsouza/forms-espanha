@@ -72,6 +72,12 @@ button {
     transition: background-color 0.3s;
 }
 
+.data {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
 footer {
     text-align: center;
     line-height: 1vh;
