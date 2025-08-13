@@ -165,7 +165,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'Apellido 2': dadosDDN.sobrenomeReq2,
                 'text_79qvkw': dados.sexo,
                 'text_80oj': dadosDDN.hora,
-                'Dia': dadosDDN.diaReq,
+                'text_74mfqw': dadosDDN.diaReq,
                 'text_78yxxr': dadosDDN.mesRegistro,
                 'Año': dadosDDN.anoReq,
                 'Localidad': dadosDDN.localidad,
