@@ -224,7 +224,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'día': dadosDDN.diaReq,
                 'text_73syra': dadosDDN.mesReq,
                 'text_74pzix': dadosDDN.anoReq,
-                'text_77zgxo': dados.endReq,
+                'text_77zgxo': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq,
                 'text_73tcpb': dados.cepReq,
                 'Telf móvil': dados.telReq,
                 'undefined_5': dadosDDN.docId,
