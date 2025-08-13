@@ -242,7 +242,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'text_44qlcd': dadosDDN.nomeCompletoPai,
                 'text_45ldqp': dadosDDN.nomeCompletoMae,
                 'text_4sdk': dados.dataNasc,
-                'text_5agtp': dadosDDN.localidad + " " + dadosDDN.paisNasc,
+                'text_5agtp': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
                 'text_19qywy': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq + ", CEP: " + dados.cepReq,
                 'text_21vpwr': dados.telReq,
                 'text_22lvdx': dados.emailReq,
