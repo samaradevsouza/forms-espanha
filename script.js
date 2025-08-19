@@ -128,7 +128,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'Nacionalidad': "Brasileña",
                 'EstadoCivil': dados.estadoCivilReq,
                 'Pasaporte': dados.numPassaporteReq,
-                'text_36cjuj': dados.endReq + " CEP: " + dados.cepReq,
+                'text_36cjuj': dados.endReq + ", CEP: " + dados.cepReq,
                 'Provincia': dados.estadoReq,
                 'Pais': dados.paisReq,
                 'Telefono': dados.telReq,
