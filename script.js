@@ -1,3 +1,58 @@
+async function buscarCEP() {
+        const estados = {
+      "AC": "Acre",
+      "AL": "Alagoas",
+      "AP": "Amapá",
+      "AM": "Amazonas",
+      "BA": "Bahia",
+      "CE": "Ceará",
+      "DF": "Distrito Federal",
+      "ES": "Espírito Santo",
+      "GO": "Goiás",
+      "MA": "Maranhão",
+      "MT": "Mato Grosso",
+      "MS": "Mato Grosso do Sul",
+      "MG": "Minas Gerais",
+      "PA": "Pará",
+      "PB": "Paraíba",
+      "PR": "Paraná",
+      "PE": "Pernambuco",
+      "PI": "Piauí",
+      "RJ": "Rio de Janeiro",
+      "RN": "Rio Grande do Norte",
+      "RS": "Rio Grande do Sul",
+      "RO": "Rondônia",
+      "RR": "Roraima",
+      "SC": "Santa Catarina",
+      "SP": "São Paulo",
+      "SE": "Sergipe",
+      "TO": "Tocantins"
+    };
+
+      const cep = document.getElementById("cepReq").value.replace(/\D/g, '');
+      if (cep.length !== 8) {
+        alert("CEP inválido!");
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        if (!response.ok) throw new Error("Erro na consulta do CEP");
+
+        const data = await response.json();
+        if (data.erro) {
+          alert("CEP não encontrado!");
+          return;
+        }
+
+        document.getElementById("endReq").value = data.logradouro + ", " + data.bairro + ", " +  data.localidade;
+        document.getElementById("estadoReq").value = estados[data.uf] || data.uf;
+
+      } catch (error) {
+        alert("Erro ao buscar o CEP: " + error.message);
+      }
+    }
+
 const formHtml = document.getElementById('formulario');
 
 formHtml.addEventListener('submit', async (e) => {

@@ -93,3 +93,21 @@ footer a {
     color: #4d517f;
     font-weight: bold;
 }
+
+#inputsCep {
+    display: flex;
+    /* justify-content: space-around; */
+    /* align-items: baseline; */
+    height: 45px;
+
+}
+
+#inputsCep button {
+    height: 40px;
+    margin-top: 1.6px;
+}
+
+#cepReq {
+    height: 45px;
+    margin-right: 5px;
+}

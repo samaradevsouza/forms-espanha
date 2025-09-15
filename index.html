@@ -82,47 +82,51 @@
                 </div>
 
                 <div class="input">
+                    <label for="cepReq">CEP de residência do requerente: </label>
+                    <div id="inputsCep">
+                        <input type="text" name="cepReq" id="cepReq" autocomplete="off">
+                        <button type="button" onclick="buscarCEP()">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="input">
                     <label for="endReq">Endereço residencial completo do requerente: </label>
                     <input type="text" name="endReq" id="endReq">
                 </div>
 
                 <div class="input">
                     <label for="estadoReq">Estado de residencia do requerente: </label>
-                    <select name="estadoReq" id="estadoReq">
-                    <option value="">Selecione</option>
-                    <option value="Acre">AC - Acre</option>
-                    <option value="Alagoas">AL - Alagoas</option>
-                    <option value="Amapá">AP - Amapá</option>
-                    <option value="Amazonas">AM - Amazonas</option>
-                    <option value="Bahia">BA - Bahia</option>
-                    <option value="Ceará">CE - Ceará</option>
-                    <option value="Distrito Federal">DF - Distrito Federal</option>
-                    <option value="Espírito Santo">ES - Espírito Santo</option>
-                    <option value="Goiás">GO - Goiás</option>
-                    <option value="Maranhão">MA - Maranhão</option>
-                    <option value="Mato Grosso">MT - Mato Grosso</option>
-                    <option value="Mato Grosso do Sul">MS - Mato Grosso do Sul</option>
-                    <option value="Minas Gerais">MG - Minas Gerais</option>
-                    <option value="Pará">PA - Pará</option>
-                    <option value="Paraíba">PB - Paraíba</option>
-                    <option value="Paraná">PR - Paraná</option>
-                    <option value="Pernambuco">PE - Pernambuco</option>
-                    <option value="Piauí">PI - Piauí</option>
-                    <option value="Rio de Janeiro">RJ - Rio de Janeiro</option>
-                    <option value="Rio Grande do Norte">RN - Rio Grande do Norte</option>
-                    <option value="Rio Grande do Sul">RS - Rio Grande do Sul</option>
-                    <option value="Rondônia">RO - Rondônia</option>
-                    <option value="Roraima">RR - Roraima</option>
-                    <option value="Santa Catarina">SC - Santa Catarina</option>
-                    <option value="São Paulo">SP - São Paulo</option>
-                    <option value="Sergipe">SE - Sergipe</option>
-                    <option value="Tocantins">TO - Tocantins</option>
-                </select>
-                </div>
-
-                <div class="input">
-                    <label for="cepReq">CEP de residência do requerente: </label>
-                    <input type="text" name="cepReq" id="cepReq">
+                    <input type="text" name="estadoReq" id="estadoReq">
+                    <!-- <select name="estadoReq" id="estadoReq">
+                        <option value="">Selecione</option>
+                        <option value="Acre">AC - Acre</option>
+                        <option value="Alagoas">AL - Alagoas</option>
+                        <option value="Amapá">AP - Amapá</option>
+                        <option value="Amazonas">AM - Amazonas</option>
+                        <option value="Bahia">BA - Bahia</option>
+                        <option value="Ceará">CE - Ceará</option>
+                        <option value="Distrito Federal">DF - Distrito Federal</option>
+                        <option value="Espírito Santo">ES - Espírito Santo</option>
+                        <option value="Goiás">GO - Goiás</option>
+                        <option value="Maranhão">MA - Maranhão</option>
+                        <option value="Mato Grosso">MT - Mato Grosso</option>
+                        <option value="Mato Grosso do Sul">MS - Mato Grosso do Sul</option>
+                        <option value="Minas Gerais">MG - Minas Gerais</option>
+                        <option value="Pará">PA - Pará</option>
+                        <option value="Paraíba">PB - Paraíba</option>
+                        <option value="Paraná">PR - Paraná</option>
+                        <option value="Pernambuco">PE - Pernambuco</option>
+                        <option value="Piauí">PI - Piauí</option>
+                        <option value="Rio de Janeiro">RJ - Rio de Janeiro</option>
+                        <option value="Rio Grande do Norte">RN - Rio Grande do Norte</option>
+                        <option value="Rio Grande do Sul">RS - Rio Grande do Sul</option>
+                        <option value="Rondônia">RO - Rondônia</option>
+                        <option value="Roraima">RR - Roraima</option>
+                        <option value="Santa Catarina">SC - Santa Catarina</option>
+                        <option value="São Paulo">SP - São Paulo</option>
+                        <option value="Sergipe">SE - Sergipe</option>
+                        <option value="Tocantins">TO - Tocantins</option>
+                    </select> -->
                 </div>
 
                 <div class="input">
@@ -285,7 +289,8 @@
                 </div>
                 <div class="input">
                     <label for="localRegistro">Local do Registro</label>
-                    <input type="text" name="localRegistro" id="localRegistro" placeholder="Cidade, Estado (por extenso)">
+                    <input type="text" name="localRegistro" id="localRegistro"
+                        placeholder="Cidade, Estado (por extenso)">
                 </div>
                 <div class="input">
                     <label for="paisRegistro">País do registro: </label>
