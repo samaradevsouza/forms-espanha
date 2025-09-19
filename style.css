@@ -42,9 +42,9 @@ label {
     color: #4d517f;
 }
 
-.anexoType {
+.head {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .input-radio {

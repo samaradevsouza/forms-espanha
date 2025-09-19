@@ -1,57 +1,68 @@
 async function buscarCEP() {
-        const estados = {
-      "AC": "Acre",
-      "AL": "Alagoas",
-      "AP": "Amapá",
-      "AM": "Amazonas",
-      "BA": "Bahia",
-      "CE": "Ceará",
-      "DF": "Distrito Federal",
-      "ES": "Espírito Santo",
-      "GO": "Goiás",
-      "MA": "Maranhão",
-      "MT": "Mato Grosso",
-      "MS": "Mato Grosso do Sul",
-      "MG": "Minas Gerais",
-      "PA": "Pará",
-      "PB": "Paraíba",
-      "PR": "Paraná",
-      "PE": "Pernambuco",
-      "PI": "Piauí",
-      "RJ": "Rio de Janeiro",
-      "RN": "Rio Grande do Norte",
-      "RS": "Rio Grande do Sul",
-      "RO": "Rondônia",
-      "RR": "Roraima",
-      "SC": "Santa Catarina",
-      "SP": "São Paulo",
-      "SE": "Sergipe",
-      "TO": "Tocantins"
+    const estados = {
+        "AC": "Acre",
+        "AL": "Alagoas",
+        "AP": "Amapá",
+        "AM": "Amazonas",
+        "BA": "Bahia",
+        "CE": "Ceará",
+        "DF": "Distrito Federal",
+        "ES": "Espírito Santo",
+        "GO": "Goiás",
+        "MA": "Maranhão",
+        "MT": "Mato Grosso",
+        "MS": "Mato Grosso do Sul",
+        "MG": "Minas Gerais",
+        "PA": "Pará",
+        "PB": "Paraíba",
+        "PR": "Paraná",
+        "PE": "Pernambuco",
+        "PI": "Piauí",
+        "RJ": "Rio de Janeiro",
+        "RN": "Rio Grande do Norte",
+        "RS": "Rio Grande do Sul",
+        "RO": "Rondônia",
+        "RR": "Roraima",
+        "SC": "Santa Catarina",
+        "SP": "São Paulo",
+        "SE": "Sergipe",
+        "TO": "Tocantins"
     };
 
-      const cep = document.getElementById("cepReq").value.replace(/\D/g, '');
-      if (cep.length !== 8) {
+    const cep = document.getElementById("cepReq").value.replace(/\D/g, '');
+    if (cep.length !== 8) {
         alert("CEP inválido!");
         return;
-      }
+    }
 
-      try {
+    try {
         const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
         if (!response.ok) throw new Error("Erro na consulta do CEP");
 
         const data = await response.json();
         if (data.erro) {
-          alert("CEP não encontrado!");
-          return;
+            alert("CEP não encontrado!");
+            return;
         }
 
-        document.getElementById("endReq").value = data.logradouro + ", " + data.bairro + ", " +  data.localidade;
+        document.getElementById("endReq").value = data.logradouro + ", " + data.bairro + ", " + data.localidade;
         document.getElementById("estadoReq").value = estados[data.uf] || data.uf;
 
-      } catch (error) {
+        if (["AM", "RR", "PA", "RO", "TO", "DF", "GO", "AC", "MT", "AP"].includes(estadoReq)) {
+            document.getElementById("cidadeConsulado").value = "Brasília";
+        } else if (["MS", "PR", "SP"].includes(estadoReq)) {
+            document.getElementById("cidadeConsulado").value = "São Paulo";
+        } else if (["RJ", "MG", "ES"].includes(estadoReq)) {
+            document.getElementById("cidadeConsulado").value = "Rio de Janeiro";
+        } else {
+            document.getElementById("cidadeConsulado").value = "Porto Alegre";
+        }
+
+
+    } catch (error) {
         alert("Erro ao buscar o CEP: " + error.message);
-      }
     }
+}
 
 const formHtml = document.getElementById('formulario');
 
@@ -62,6 +73,7 @@ formHtml.addEventListener('submit', async (e) => {
     const { PDFDocument } = PDFLib;
 
     const anexoSelecionado = document.querySelector('input[name="anexoType"]:checked')?.value;
+    const formSelecionado = document.querySelector('input[name="formsType"]:checked')?.value;
 
 
 
@@ -150,7 +162,7 @@ formHtml.addEventListener('submit', async (e) => {
 
     const arquivos = [];
 
-    if (anexoSelecionado === "Anexo I") {
+    if (anexoSelecionado === "Anexo I" && formSelecionado === "formSp") {
         arquivos.push({
             url: './forms-sp/anexo1.pdf',
             nome: 'AnexoI.pdf',
@@ -171,7 +183,49 @@ formHtml.addEventListener('submit', async (e) => {
                 'Taextfield-6': 'Española',
             }
         });
-    } else {
+    } else if (anexoSelecionado === "Anexo I" && formSelecionado === "formRj") {
+        arquivos.push({
+            url: './forms-rj/anexo1.pdf',
+            nome: 'AnexoI.pdf',
+            campos: {
+                'Textfield': dados.nomeReq,
+                'Textfield-0': dadosDDN.sobrenomePai1,
+                'Textfield-1': dadosDDN.sobrenomeMae1,
+                'Textfield-2': dados.nacionalidadeReq,
+                'Textfield-3': dados.estadoCivilReq,
+                'Textfield-4': dados.numPassaporteReq,
+                'Textfield-5': dados.estadoReq,
+                'Textfield-6': dados.paisReq,
+                'Textfield-7': dados.telReq,
+                'Textfield-8': dados.emailReq,
+                'Textfield-9': 'Española',
+                'Textfield-3a': dados.endReq + ", CEP: " + dados.cepReq,
+                'Textfieldad': dados.cidadeConsulado,
+                'Texto2': dados.cidadeConsulado,
+            }
+        });
+    } else if (anexoSelecionado === "Anexo III" && formSelecionado === "formRj") {
+        arquivos.push({
+            url: './forms-rj/anexo3.pdf',
+            nome: 'AnexoIII.pdf',
+            campos: {
+                'Textfield': dados.nomeReq,
+                'Textfield-0': dadosDDN.sobrenomePai1,
+                'Textfield-1': dadosDDN.sobrenomeMae1,
+                'Textfield-2': dados.nacionalidadeReq,
+                'Textfield-3': dados.estadoCivilReq,
+                'Textfield-4': dados.numPassaporteReq,
+                'Textfield-5': dados.endReq + ", CEP: " + dados.cepReq,
+                'Textfield-6': dados.estadoReq,
+                'Textfield-7': dados.paisReq,
+                'Textfield-8': dados.telReq,
+                'Textfield-9': dados.emailReq,
+                'En': 'Rio de Janeiro',
+                'Texto1': dados.cidadeConsulado,
+            }
+        })
+    }
+    else {
         arquivos.push({
             url: './forms-sp/anexo3.pdf',
             nome: 'AnexoIII.pdf',
@@ -192,121 +246,213 @@ formHtml.addEventListener('submit', async (e) => {
             }
         });
     }
-    arquivos.push(
-        {
-            url: './forms-sp/anexo5.pdf',
-            nome: 'AnexoV.pdf',
-            campos: {
-                'Textfield': dados.nomeReq,
-                'Textfield-0': dadosDDN.sobrenomePai1,
-                'Textfield-1': dadosDDN.sobrenomeMae1,
-                'Textfield-2': dados.nacionalidadeReq,
-                'Textfield-3': dados.estadoCivilReq,
-                'Textfield-4': dados.numPassaporteReq,
-                'Textfield-5': dados.endReq + ", CEP: " + dados.cepReq,
-                'Textfield-6': dados.estadoReq,
-                'Textfield-7': dados.paisReq,
-                'Textfield-8': dados.telReq,
-                'Textfield-9': dados.emailReq,
-                'En': dados.cidadeConsulado,
+
+    arquivos.push({
+        url: './forms-sp/anexo5.pdf',
+        nome: 'AnexoV.pdf',
+        campos: {
+            'Textfield': dados.nomeReq,
+            'Textfield-0': dadosDDN.sobrenomePai1,
+            'Textfield-1': dadosDDN.sobrenomeMae1,
+            'Textfield-2': dados.nacionalidadeReq,
+            'Textfield-3': dados.estadoCivilReq,
+            'Textfield-4': dados.numPassaporteReq,
+            'Textfield-5': dados.endReq + ", CEP: " + dados.cepReq,
+            'Textfield-6': dados.estadoReq,
+            'Textfield-7': dados.paisReq,
+            'Textfield-8': dados.telReq,
+            'Textfield-9': dados.emailReq,
+            'En': dados.cidadeConsulado,
+        }
+    });
+
+    if (formSelecionado === "formSp") {
+        arquivos.push(
+            {
+                url: './forms-sp/ddn.pdf',
+                nome: 'DeclaracionDatosNacimientos.pdf',
+                campos: {
+                    'Nombre': dados.nomeReq,
+                    'Apellido 1': dadosDDN.sobrenomeReq1,
+                    'Apellido 2': dadosDDN.sobrenomeReq2,
+                    'text_79qvkw': dados.sexo,
+                    'text_80oj': dadosDDN.hora,
+                    'text_74mfqw': dadosDDN.diaReq,
+                    'text_78yxxr': dadosDDN.mesRegistro,
+                    'Año': dadosDDN.anoReq,
+                    'Localidad': dadosDDN.localidad,
+                    'Pais': dadosDDN.paisNasc,
+                    'Dia_Incripcion': dadosDDN.diaRegistro,
+                    'text_82wrmg': dadosDDN.mesRegistro,
+                    'Año Inscrito': dadosDDN.anoRegistro,
+                    'Localidad Rehistro': dadosDDN.localRegistro,
+                    'Pais Registro': dadosDDN.paisRegistro,
+                    'Tomo': dadosDDN.livro,
+                    'Página': dadosDDN.folha,
+                    'Número': dadosDDN.termo,
+
+                    'Nombre Padre': dadosDDN.nomePai,
+                    'Apellido 1 Padre': dadosDDN.sobrenomePai1,
+                    'Apellido 2 Padre': dadosDDN.sobrenomePai2,
+                    'Hijo de': dadosDDN.paiPai,
+                    'Y de': dadosDDN.maePai,
+                    'Localidad Padre': dadosDDN.localidadPai,
+                    'Pais Padre': dadosDDN.paisNascPai,
+                    'Dia padre': dadosDDN.diaNascPai,
+                    'text_81dlpf': dadosDDN.mesNascPai,
+                    'del año': dadosDDN.anoNascPai,
+                    'text_73gqhu': dadosDDN.estadoCivilPai1,
+                    'text_74ifqc': dadosDDN.estadoCivilPai2,
+                    'text_75oazs': dadosDDN.nacionalidadePai1,
+                    'text_76pwih': dadosDDN.nacionalidadePai2,
+                    'text_77ejro': dadosDDN.domicilioPai,
+
+                    'Nombre madre': dadosDDN.nomeMae,
+                    'Apellido 1 madre': dadosDDN.sobrenomeMae1,
+                    'Apellido 2 madre': dadosDDN.sobrenomeMae2,
+                    'Hija de madre': dadosDDN.maeMae,
+                    'Hija de padre': dadosDDN.paiMae,
+                    'Nacida madre': dadosDDN.localidadMae,
+                    'Pais madre': dadosDDN.PaisNascMae,
+                    'Dia madre': dadosDDN.diaNascMae,
+                    'text_83sskt': dadosDDN.mesNascMae,
+                    'del año_2': dadosDDN.anoNascMae,
+                    'text_78dsxj': dadosDDN.EstadoCivilMae1,
+                    'text_79grsr': dadosDDN.EstadoCivilMae2,
+                    'text_80uicu': dadosDDN.nacionalidadeMae1,
+                    'text_81cyvg': dadosDDN.nacionalidadeMae2,
+                    'text_82rxyp': dadosDDN.domicilioMae,
+
+                    'text_74ikwy': dadosDDN.existeONo,
+                    'Dia mat padres': dadosDDN.diaCelebracao,
+                    'text_84swvj': dadosDDN.mesCelebracao,
+                    'año': dadosDDN.anoCelebracao,
+                    'text_74uavp': dadosDDN.localCelebracao,
+                    'text_73kimi': dadosDDN.localRegistroCas,
+
+                    'text_76sfmj': dadosDDN.nomeCompletoReq,
+                    'text_75kxrq': dadosDDN.calidad,
+                    'Natural de': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
+                    'día': dadosDDN.diaReq,
+                    'text_73syra': dadosDDN.mesReq,
+                    'text_74pzix': dadosDDN.anoReq,
+                    'text_77zgxo': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq,
+                    'text_73tcpb': dados.cepReq,
+                    'Telf móvil': dados.telReq,
+                    'undefined_5': dadosDDN.docId,
+                    'email': dados.emailReq,
+                    'Texto13': dados.cidadeConsulado
+                }
+            },
+            {
+                url: './forms-sp/solicitud.pdf',
+                nome: 'solicitud.pdf',
+                campos: {
+                    'text_3zdxa': dados.cidadeConsulado,
+                    'text_2afhz': 'No',
+                    'text_50lwgr': dados.nomeReq,
+                    'text_44qlcd': dadosDDN.nomeCompletoPai,
+                    'text_45ldqp': dadosDDN.nomeCompletoMae,
+                    'text_4sdk': dados.dataNasc,
+                    'text_5agtp': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
+                    'text_19qywy': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq + ", CEP: " + dados.cepReq,
+                    'text_21vpwr': dados.telReq,
+                    'text_22lvdx': dados.emailReq,
+                    'text_29nvjz': dados.conjugeReq,
+                    'text_48iktk': dados.cidadeConsulado,
+                    'text_49wlnx': dados.cidadeConsulado
+                }
             }
-        },
-        {
-            url: './forms-sp/ddn.pdf',
-            nome: 'DeclaracionDatosNacimientos.pdf',
+        );
+    } else {
+        arquivos.push({
+            url: './forms-rj/registrocivil.pdf',
+            nome: 'registrocivil.pdf',
             campos: {
                 'Nombre': dados.nomeReq,
-                'Apellido 1': dadosDDN.sobrenomeReq1,
-                'Apellido 2': dadosDDN.sobrenomeReq2,
-                'text_79qvkw': dados.sexo,
-                'text_80oj': dadosDDN.hora,
-                'text_74mfqw': dadosDDN.diaReq,
-                'text_78yxxr': dadosDDN.mesRegistro,
-                'Año': dadosDDN.anoReq,
-                'Localidad': dadosDDN.localidad,
-                'Pais': dadosDDN.paisNasc,
-                'Dia_Incripcion': dadosDDN.diaRegistro,
-                'text_82wrmg': dadosDDN.mesRegistro,
-                'Año Inscrito': dadosDDN.anoRegistro,
-                'Localidad Rehistro': dadosDDN.localRegistro,
-                'Pais Registro': dadosDDN.paisRegistro,
+                'Apellido1': dadosDDN.sobrenomeReq1,
+                'Apellido2': dadosDDN.sobrenomeReq2,
+                'Sexo': dados.sexo,
+                'Hora': dadosDDN.hora,
+                'DiaNacimiento': dadosDDN.diaReq,
+                'MesNacimiento': dadosDDN.mesReq,
+                'AnioNacimiento': dadosDDN.anoReq,
+                'LugarNacimiento': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
+                // 'FechaInscripcion': 'socorro',
                 'Tomo': dadosDDN.livro,
-                'Página': dadosDDN.folha,
-                'Número': dadosDDN.termo,
+                'RegistroCivil': dadosDDN.localRegistro + ", " + dadosDDN.paisNasc,
+                'Pagina': dadosDDN.folha,
+                'Numero': dadosDDN.termo,
 
-                'Nombre Padre': dadosDDN.nomePai,
-                'Apellido 1 Padre': dadosDDN.sobrenomePai1,
-                'Apellido 2 Padre': dadosDDN.sobrenomePai2,
-                'Hijo de': dadosDDN.paiPai,
-                'Y de': dadosDDN.maePai,
-                'Localidad Padre': dadosDDN.localidadPai,
-                'Pais Padre': dadosDDN.paisNascPai,
-                'Dia padre': dadosDDN.diaNascPai,
-                'text_81dlpf': dadosDDN.mesNascPai,
-                'del año': dadosDDN.anoNascPai,
-                'text_73gqhu': dadosDDN.estadoCivilPai1,
-                'text_74ifqc': dadosDDN.estadoCivilPai2,
-                'text_75oazs': dadosDDN.nacionalidadePai1,
-                'text_76pwih': dadosDDN.nacionalidadePai2,
-                'text_77ejro': dadosDDN.domicilioPai,
+                'NombreProgA': dadosDDN.nomePai,
+                'Apellido1ProgA': dadosDDN.sobrenomePai1,
+                'Apellido2ProgA': dadosDDN.sobrenomePai2,
+                'Progenitor1ProgA': dadosDDN.paiPai,
+                'Progenitor2ProgA': dadosDDN.maePai,
+                'AnioNacProgA': dadosDDN.anoNascPai,
+                'MesNacProgA': dadosDDN.mesNascPai,
+                // 'DiaNacProgA': dadosDDN.anoNascPai,
+                'LugarNacProgA': dadosDDN.localidadPai + ", " + dadosDDN.paisNascPai,
+                'EstadoCivilAlNacProg1': dadosDDN.estadoCivilPai1,
+                'EstadoCivilActual': dadosDDN.estadoCivilPai2,
+                'NacionalidadAlNacProgA': dadosDDN.nacionalidadePai1,
+                'NacionalidadActualProgA': dadosDDN.nacionalidadePai2,
+                'DomicilioProgA': dadosDDN.domicilioPai,
 
-                'Nombre madre': dadosDDN.nomeMae,
-                'Apellido 1 madre': dadosDDN.sobrenomeMae1,
-                'Apellido 2 madre': dadosDDN.sobrenomeMae2,
-                'Hija de madre': dadosDDN.maeMae,
-                'Hija de padre': dadosDDN.paiMae,
-                'Nacida madre': dadosDDN.localidadMae,
-                'Pais madre': dadosDDN.PaisNascMae,
-                'Dia madre': dadosDDN.diaNascMae,
-                'text_83sskt': dadosDDN.mesNascMae,
-                'del año_2': dadosDDN.anoNascMae,
-                'text_78dsxj': dadosDDN.EstadoCivilMae1,
-                'text_79grsr': dadosDDN.EstadoCivilMae2,
-                'text_80uicu': dadosDDN.nacionalidadeMae1,
-                'text_81cyvg': dadosDDN.nacionalidadeMae2,
-                'text_82rxyp': dadosDDN.domicilioMae,
+                'NombreProgB': dadosDDN.nomeMae,
+                'Apellido1ProgB': dadosDDN.sobrenomeMae1,
+                'Apellido2ProgB': dadosDDN.sobrenomeMae2,
+                'Progenitor1ProgB': dadosDDN.maePai,
+                'Progenitor2ProgB': dadosDDN.maeMae,
+                'MesNacProgB': dadosDDN.mesNascMae,
+                'AnioNacProgB': dadosDDN.anoNascMae,
+                // 'DiaNacProgB': 'DiaNacProgB',
+                'LugarNacProgB': dadosDDN.localidadMae + ", " + dadosDDN.PaisNascMae,
+                'EstadoCivilAlNacProgB': dadosDDN.EstadoCivilMae1,
+                'EstadoCivilActualProgB': dadosDDN.EstadoCivilMae2,
+                'NacionalidadAlNacProgB': dadosDDN.nacionalidadeMae1,
+                'NacionalidadActualProgB': dadosDDN.nacionalidadeMae2,
+                'DomicilioProgB': dadosDDN.domicilioMae,
 
-                'text_74ikwy': dadosDDN.existeONo,
-                'Dia mat padres': dadosDDN.diaCelebracao,
-                'text_84swvj': dadosDDN.mesCelebracao,
-                'año': dadosDDN.anoCelebracao,
-                'text_74uavp': dadosDDN.localCelebracao,
-                'text_73kimi': dadosDDN.localRegistroCas,
+                'ExisteMatrimonio': dadosDDN.existeONo,
+                'DiaMatrimonio': dadosDDN.diaCelebracao,
+                'MesMatrimonio': dadosDDN.mesCelebracao,
+                'AnioMatrimonio': dadosDDN.anoCelebracao,
+                'LugarMatrimonio': dadosDDN.localCelebracao,
+                'LugarInscripMatrimonio': dadosDDN.localRegistroCas,
+                'DocumentoMatrimonio': 'Certificado de Matrimonio',
 
-                'text_76sfmj': dadosDDN.nomeCompletoReq,
-                'text_75kxrq': dadosDDN.calidad,
-                'Natural de': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
-                'día': dadosDDN.diaReq,
-                'text_73syra': dadosDDN.mesReq,
-                'text_74pzix': dadosDDN.anoReq,
-                'text_77zgxo': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq,
-                'text_73tcpb': dados.cepReq,
-                'Telf móvil': dados.telReq,
-                'undefined_5': dadosDDN.docId,
-                'email': dados.emailReq,
-                'Texto13': dados.cidadeConsulado
+                'Declarante': dadosDDN.nomeCompletoReq,
+                'ParentescoDecl': dadosDDN.calidad,
+                'DomicilioDecl': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq,
+                'FechaNacDecl': dados.dataNasc,
+                'LugarNacDecl': 'Brasil',
+                'CPDecl': dados.cepReq,
+                'TfnoDecl': dados.telReq,
+                'MailDecl': dados.emailReq,
+                'DocumentoDecl': dadosDDN.docId,
+                'LugarFecha': dados.cidadeConsulado,
             }
         },
-        {
-            url: './forms-sp/solicitud.pdf',
-            nome: 'solicitud.pdf',
-            campos: {
-                'text_3zdxa': dados.cidadeConsulado,
-                'text_2afhz': 'No',
-                'text_50lwgr': dados.nomeReq,
-                'text_44qlcd': dadosDDN.nomeCompletoPai,
-                'text_45ldqp': dadosDDN.nomeCompletoMae,
-                'text_4sdk': dados.dataNasc,
-                'text_5agtp': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
-                'text_19qywy': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq + ", CEP: " + dados.cepReq,
-                'text_21vpwr': dados.telReq,
-                'text_22lvdx': dados.emailReq,
-                'text_29nvjz': dados.conjugeReq,
-                'text_48iktk': dados.cidadeConsulado,
-                'text_49wlnx': dados.cidadeConsulado
-            }
-        }
-    );
+            {
+                url: './forms-rj/solicitud.pdf',
+                nome: 'solicitud.pdf',
+                campos: {
+                    'Nombre': dados.nomeReq,
+                    'Fecha_nacimiento': dadosDDN.dataNasc,
+                    'Municipio_Provincia_Pais': dadosDDN.localidad + ", " + dadosDDN.paisNasc,
+                    'Nombre_padre_y_madre': dadosDDN.nomeCompletoMae + " y " + dadosDDN.nomeCompletoPai,
+                    'Domicilio_Pais': dados.endReq + ", " + dados.estadoReq + ", " + dados.paisReq + ", CEP: " + dados.cepReq,
+                    'Tf_Movil': dados.telReq,
+                    'E_mail': dados.emailReq,
+                    'Casado_con': dadosDDN.conjugeReq,
+                    'Datos_ciertos': 'Rio de Janeiro',
+                    'En_Ciudad': 'Rio de Janeiro',
+                }
+
+            })
+    }
+
 
     for (const arquivo of arquivos) {
         try {
