@@ -47,15 +47,33 @@ async function buscarCEP() {
 
         document.getElementById("endReq").value = data.logradouro + ", " + data.bairro + ", " + data.localidade;
         document.getElementById("estadoReq").value = estados[data.uf] || data.uf;
-
-        if (["AM", "RR", "PA", "RO", "TO", "DF", "GO", "AC", "MT", "AP"].includes(estadoReq)) {
+        if ([
+            "Amazonas",
+            "Acre",
+            "Roraima",
+            "Pará",
+            "Rondônia",
+            "Tocantins",
+            "Distrito Federal",
+            "Goiás",
+            "Mato Grosso",
+            "Amapá"
+        ].includes(estadoReq)) {
             document.getElementById("cidadeConsulado").value = "Brasília";
-        } else if (["MS", "PR", "SP"].includes(estadoReq)) {
+        } else if ([
+            "Mato Grosso do Sul",
+            "Paraná",
+            "São Paulo"
+        ].includes(estadoReq)) {
             document.getElementById("cidadeConsulado").value = "São Paulo";
-        } else if (["RJ", "MG", "ES"].includes(estadoReq)) {
+        } else if ([
+            "Rio de Janeiro",
+            "Minas Gerais",
+            "Espírito Santo"
+        ].includes(estadoReq)) {
             document.getElementById("cidadeConsulado").value = "Rio de Janeiro";
         } else {
-            document.getElementById("cidadeConsulado").value = "Porto Alegre";
+            document.getElementById("cidadeConsulado").value = "";
         }
 
 
