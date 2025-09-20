@@ -406,7 +406,7 @@ formHtml.addEventListener('submit', async (e) => {
                 'Apellido1ProgA': dadosDDN.sobrenomePai1,
                 'Apellido2ProgA': dadosDDN.sobrenomePai2,
                 'Progenitor1ProgA': dadosDDN.paiPai,
-                'Progenitor2ProgA': dadosDDN.maePai,
+                'Progenitor2ProgA': dadosDDN.paiMae,
                 'AnioNacProgA': dadosDDN.anoNascPai,
                 'MesNacProgA': dadosDDN.mesNascPai,
                 // 'DiaNacProgA': dadosDDN.anoNascPai,
